@@ -1,0 +1,15 @@
+1. Build react lib with --publishable and --importPath=@your-org-name
+2. cd over to new lib and initialize git repo and push code
+3. add these to package.json  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },"repository": {
+    "type": "git",
+    "url": "git+https://github.com/<username>/<reponame>.git"
+  },
+4. create new .npmrc file in your library and add following: @<username>:registry=https://npm.pkg.github.com/
+5. login to npm this command. Use github_token as your password : npm login --scope=@<username> --auth-type=legacy --registry=https://npm.pkg.github.com
+6. build your library from root directory in your workspace
+7. make sure you are in root workspac and use following: npm publish ./dist/libs/<lib-name> -access public
+
+TO INSTALL
+add .npmrc file into your project with @<scope-of-desired-package>:registry=https://npm.pkg.github.com/
