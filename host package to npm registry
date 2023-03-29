@@ -1,0 +1,27 @@
+1. Create your workspace using npx create-nx-workspace@latest. Choose "integrated apps" from the listed options and again "apps" from next set of options.
+
+2 Cd over to your newly formed workspace. run this command: yarn global add nx.
+
+3. add react using npm add -D @nrwl/react
+
+4. Create your react application using - npx nx g @nrwl/react:application your-app-name --bundler=vite --compiler=swc --pascalCaseFiles
+if this gives error install vite and cypress and init react
+npm i -D @nrwl/vite
+ npm i -D @nrwl/cypress
+npx nx g @nrwl/react:init (fails with yarn error but might not cause a prob)
+
+5. yarn install to install all dependencies if error. You can now serve using npx nx serve your-app-name
+
+
+6: create a library using npx nx generate/react:library your-lib-name --bundler=vite --compiler=swc --pascalCaseFiles 
+(use --publishable to make it publishable. you need to add importPath too using --imortPath=your-path (for eg @your-npm-username/your-lib-name)
+
+ALWAYS RESTART TSCONFIG AFTER ADD NEW LIBS OR AFTER ANYTHING THAT CHANGES  CONFIG
+
+Initialize tailwind using- npx nx g @nrwl/react:setup-tailwind -your-app-name
+
+PUBLISH TO NPM
+
+1. First build your app using npx nx build --your-lib-name
+2. run npm adduser in your terminal
+3. after succesfull login run:  npm publish ./dist/libs/-your-lib-name --access=public from root workspace
